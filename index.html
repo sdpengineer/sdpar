@@ -31,11 +31,9 @@
 
   <!-- AR SCENE -->
   <a-scene
-    embedded
-    arjs="sourceType: webcam; debugUIEnabled: true;"
-    vr-mode-ui="enabled: false"
-    renderer="logarithmicDepthBuffer: true">
-
+  embedded
+  arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true;"
+  vr-mode-ui="enabled:false">
     <!-- LIGHTS -->
     <a-light type="ambient" intensity="1"></a-light>
     <a-light type="directional" position="1 2 1" intensity="0.8"></a-light>
