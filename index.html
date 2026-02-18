@@ -1,36 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR DEBUG</title>
+  <title>WebAR Debug Test</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+  <!-- AR.js for A-Frame -->
   <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
 </head>
 
 <body style="margin:0; overflow:hidden; background:black;">
+
+  <!-- DEBUG OVERLAY -->
   <div style="
     position:fixed;
-    top:0; left:0;
-    color:lime;
-    background:black;
+    top:0;
+    left:0;
     z-index:9999;
-    padding:5px;
+    background:black;
+    color:lime;
+    padding:6px;
+    font-family:monospace;
     font-size:14px;">
     AR PAGE LOADED
   </div>
 
+  <!-- AR SCENE -->
   <a-scene
     embedded
     arjs="sourceType: webcam; debugUIEnabled: true;"
-    vr-mode-ui="enabled:false">
+    vr-mode-ui="enabled: false"
+    renderer="logarithmicDepthBuffer: true">
 
+    <!-- LIGHTS -->
+    <a-light type="ambient" intensity="1"></a-light>
+    <a-light type="directional" position="1 2 1" intensity="0.8"></a-light>
+
+    <!-- MARKER -->
     <a-marker preset="hiro">
-      <a-box color="red" scale="0.5 0.5 0.5"></a-box>
+
+      <!-- SAFE DEBUG OBJECT (ALWAYS WORKS) -->
+      <a-box
+        color="red"
+        scale="0.5 0.5 0.5"
+        position="0 0.25 0">
+      </a-box>
+
+      <!-- OPTIONAL MODEL (COMMENTED FOR NOW) -->
+      <!--
+      <a-entity
+        gltf-model="stella_girl_2.glb"
+        scale="0.02 0.02 0.02"
+        position="0 0 0"
+        rotation="0 180 0">
+      </a-entity>
+      -->
+
     </a-marker>
 
+    <!-- CAMERA -->
     <a-entity camera></a-entity>
+
   </a-scene>
 </body>
 </html>
